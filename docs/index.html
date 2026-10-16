@@ -80,10 +80,10 @@ pre{background:#0b1020;color:#e2e8f0;padding:14px;border-radius:12px;overflow:au
 <section id="demo" class="card">
 <h2>Live demo</h2>
 <p><span class="pill">GIF · 720px · 196KB · &lt;10MB limit</span> Watch one row <code>K3BQ8ZZQ1AX7Z</code>: selective (squares) locks onto each digit and rides through letters; fixed (circles) smears everything together.</p>
-<img class="fig" id="demogif" src="ASSET_PREFIX/docs/demo.gif" alt="Animated selective vs fixed memory trace">
+<img class="fig" id="demogif" src="demo.gif" alt="Animated selective vs fixed memory trace">
 <div class="grid cols2" style="margin-top:12px">
-<div><h3>Memory scaling (log–log)</h3><img class="fig" src="ASSET_PREFIX/figures/scaling.png" alt="Transformer quadratic vs Mamba flat scaling"></div>
-<div><h3>Forgetting curve</h3><img class="fig" src="ASSET_PREFIX/figures/forgetting.png" alt="Fixed decay vs selective retention"></div>
+<div><h3>Memory scaling (log–log)</h3><img class="fig" src="../figures/scaling.png" alt="Transformer quadratic vs Mamba flat scaling"></div>
+<div><h3>Forgetting curve</h3><img class="fig" src="../figures/forgetting.png" alt="Fixed decay vs selective retention"></div>
 </div>
 <p style="color:var(--muted);font-size:13px">Tip for video demos: the GIF above is the README-embeddable version (15fps-style, cropped, 720px). For a full narrated video, screen-record this page scrolling + the playground below at 1080p, keep it under 2 minutes, and link it next to the GIF — pages with both have the highest completion rate.</p>
 </section>
@@ -182,9 +182,6 @@ pip install -r requirements.txt &amp;&amp; python experiments/run_all.py --seed 
 </section>
 </div>
 <div class="footer wrap">MIT · Single-file page, no trackers, works offline · Figures: <code>figures/</code> · Demo: <code>docs/demo.gif</code> · Data modes logged honestly (<code>live-*</code> vs <code>synthetic-fallback</code>).</div>
-<script>
-// asset prefix fix: root preview.html uses "" while docs/index.html lives one level deeper
-(function(){const inDocs=/\/docs\//.test(location.pathname);if(inDocs){document.getElementById('demogif').src='demo.gif';document.querySelectorAll('img.fig[src^="ASSET_PREFIX"]').forEach(im=>{im.src=im.src.replace('ASSET_PREFIX/','../');});}else{document.querySelectorAll('img.fig[src^="ASSET_PREFIX"]').forEach(im=>{im.src=im.src.replace('ASSET_PREFIX/','');});}})();
-</script>
+<!-- assets: relative paths (root file uses docs/... and figures/...) -->
 </body>
 </html>

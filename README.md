@@ -53,10 +53,29 @@
 
 ## View as a website (GitHub Pages — deploy from branch, 2026)
 
+**Live site (click):** [`https://m0-ar.github.io/mamba-selective-memory-phd-2026/`](https://m0-ar.github.io/mamba-selective-memory-phd-2026/) · [`/preview.html`](https://m0-ar.github.io/mamba-selective-memory-phd-2026/preview.html) · [`/docs/preview.html`](https://m0-ar.github.io/mamba-selective-memory-phd-2026/docs/preview.html)
+
+> All three URLs are mirrors of the same page by design, so the site works whether Pages serves source `/` or `/docs` (see probe table below). Locally: [`./preview.html`](./preview.html) · [`./docs/preview.html`](./docs/preview.html) · [`./index.html`](./index.html) (redirect).
+
 1. Push this repo to GitHub.
-2. Open **Settings → Pages → Deploy from a branch** → Branch **main**, folder **/docs** → Save.
-3. Open `https://<you>.github.io/<repo>/` — serves `docs/index.html` (same as `preview.html`).
-4. Custom domain (optional): Pages → Custom domain → add `docs/CNAME` → DNS CNAME to `<you>.github.io` → Enforce HTTPS.
+2. Open **Settings → Pages → Deploy from a branch** → Branch **main**, folder **/docs** (recommended) → Save.
+3. Wait 1–2 min, check Actions → "pages build and deployment" is green, then probe:
+```bash
+BASE="https://m0-ar.github.io/mamba-selective-memory-phd-2026"
+for p in "" "preview.html" "docs/preview.html"; do
+  printf "%s -> " "/$p"
+  curl -s -o /dev/null -w "%{http_code}\n" "$BASE/$p"
+done
+```
+| `/` | `/preview.html` | `/docs/preview.html` | Meaning |
+|---|---|---|---|
+| 200 | 200 | 404 | source = `/docs` ✅, all good |
+| 200 | 404 | 200 | source = `/` (root); page lives under `/docs` |
+| 404 | 404 | 404 | Pages off / still building / wrong branch |
+| 200 | 404 | 404 | source = `/`, but neither entry nor file exists |
+
+Rules applied here: entry `index.html` exists at the top of **both** `/` and `/docs`; asset paths are relative (`docs/...`, `figures/...` from root files; `demo.gif`, `../figures/...` from `/docs` files); empty `.nojekyll` sits in both `/` and `/docs`. After changing Pages settings, re-probe before assuming failure — green "Deployed" only proves *something* built, not that *your path* exists under the configured source.
+4. Custom domain (optional): Pages → Custom domain → add `docs/CNAME` → DNS CNAME to `m0-ar.github.io` → Enforce HTTPS.
 5. Local: `python3 -m http.server -d . 8000` → `http://localhost:8000/preview.html`.
 
 ![Full-page interactive site](docs/screenshot.png)
