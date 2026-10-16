@@ -58,7 +58,7 @@
 > All three URLs are mirrors of the same page by design, so the site works whether Pages serves source `/` or `/docs` (see probe table below). Locally: [`./preview.html`](./preview.html) · [`./docs/preview.html`](./docs/preview.html) · [`./index.html`](./index.html) (redirect).
 
 1. Push this repo to GitHub.
-2. Open **Settings → Pages → Deploy from a branch** → Branch **main**, folder **/docs** (recommended) → Save.
+2. Open **Settings → Pages → Deploy from a branch** → Branch **main**, folder **/** (root, recommended so `/`, `/preview.html` **and** `/docs/preview.html` all return 200) → Save. (`/docs` also works: then `/` and `/preview.html` return 200 and `/docs/preview.html` 404 by design — same page, different mount point.)
 3. Wait 1–2 min, check Actions → "pages build and deployment" is green, then probe:
 ```bash
 BASE="https://m0-ar.github.io/mamba-selective-memory-phd-2026"
