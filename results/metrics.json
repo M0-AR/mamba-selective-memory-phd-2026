@@ -1,0 +1,123 @@
+{
+  "seed": 0,
+  "hand": {
+    "trace_4_0_0_2_keep05": [
+      2.0,
+      1.0,
+      0.5,
+      1.25
+    ],
+    "trace_2_0_6_keep05": [
+      1.0,
+      0.5,
+      3.25
+    ],
+    "keep_step_001": 0.9900498337491681,
+    "keep_step_5": 0.006737946999085467,
+    "keep_step_20": 2.061153622438558e-09,
+    "K3BQ8ZZ_selective": 8
+  },
+  "game": {
+    "best_keep": 0.0,
+    "train_acc": 0.2737373737373737,
+    "test_fixed": 0.2826747720364742,
+    "test_selective": 1.0,
+    "used": 987,
+    "p_last_is_digit": 0.212,
+    "n_train": 1000,
+    "n_test": 1000
+  },
+  "slots": {
+    "alphas": [
+      0.2484613592984996,
+      0.6931471805599453,
+      1.2729656758128873,
+      1.9661128563728327
+    ],
+    "per_letter_keep": [
+      0.78,
+      0.5,
+      0.28,
+      0.14
+    ],
+    "after9": [
+      0.10612634052021677,
+      0.0019531231373548508,
+      1.0578455953315202e-05,
+      2.0661046784000018e-08
+    ],
+    "after3": [
+      0.6041725229441675,
+      0.2499997615814209,
+      0.0783999999993122,
+      0.019600000000000003
+    ]
+  },
+  "scale": {
+    "table": {
+      "16": {
+        "transformer": 24576,
+        "mamba": 24576,
+        "ratio": 1.0
+      },
+      "1000": {
+        "transformer": 1536000,
+        "mamba": 24576,
+        "ratio": 62.5
+      },
+      "32000": {
+        "transformer": 49152000,
+        "mamba": 24576,
+        "ratio": 2000.0
+      }
+    },
+    "forget": {
+      "fixed_099_1000": 0.000302198731874605,
+      "selective_1M": 6.993003499027904
+    },
+    "paper_reported": {
+      "selective_copy_S4": 18.3,
+      "selective_copy_selective": 97.0,
+      "selective_copy_full": 99.8,
+      "throughput_gain": 5.0,
+      "mamba3B_vs_2x": "matches 2x transformer"
+    }
+  },
+  "live": {
+    "text_mode": "live-github-tinyshakespeare",
+    "text_len": 20000,
+    "text_demo_fixed_mem": 5.57820438962111,
+    "text_demo_sel_mem": 0.004544755054159232,
+    "aapl_mode": "live-yahoo-AAPL-2y",
+    "btc_mode": "live-coingecko-btcusd-365d",
+    "aapl": {
+      "n": 501,
+      "sigma": 0.017966366582455772,
+      "n_events": 24,
+      "fixed_best_keep": 0.0,
+      "fixed_best_mse": 0.0,
+      "selective_mean_hold_err": 0.009183061617092711,
+      "selective_final_mem": -0.043280208193535376,
+      "last_event": -0.07638294211415975
+    },
+    "btc": {
+      "n": 365,
+      "sigma": 0.02296727397759862,
+      "n_events": 18,
+      "fixed_best_keep": 0.0,
+      "fixed_best_mse": 0.0,
+      "selective_mean_hold_err": 0.010979995245154679,
+      "selective_final_mem": 0.04978967557040503,
+      "last_event": 0.0647283374628973
+    }
+  },
+  "hidden_pattern_selectivity_threshold": {
+    "1e-07": 1.0,
+    "1e-05": 1.0,
+    "0.001": 1.0,
+    "0.01": 0.9933333333333333,
+    "0.1": 0.5766666666666667,
+    "0.5": 0.37333333333333335,
+    "1.0": 0.3333333333333333
+  }
+}

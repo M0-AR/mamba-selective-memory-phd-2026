@@ -1,0 +1,10 @@
+services:
+  study:
+    build: .
+    volumes:
+      - ./results:/work/results
+      - ./figures:/work/figures
+    command: python experiments/run_all.py --seed 0
+  tests:
+    build: .
+    command: python -m pytest tests/ -v
